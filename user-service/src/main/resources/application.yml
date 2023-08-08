@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/hr
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create
