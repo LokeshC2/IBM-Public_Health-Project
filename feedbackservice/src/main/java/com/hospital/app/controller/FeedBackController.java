@@ -32,7 +32,7 @@ public class FeedBackController {
 	public ResponseEntity<List<Feedback>> getAllFeedback(){
 		return ResponseEntity.ok(feedbackService.getAllFeedback());
 	}
-	@GetMapping("/{id}]")
+	@GetMapping("/{id}")
 	public ResponseEntity<Feedback> getFeedbackById(@PathVariable Long id){
 		return ResponseEntity.ok(feedbackService.getFeedbackById(id));
 	}

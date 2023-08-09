@@ -31,13 +31,5 @@ public class Feedback {
 	private String experience;
 	
 	
-
-	public Feedback(String name,String feedbackMessage, String experience) {
-		super();
-		this.name = name;
-		this.feedbackMessage = feedbackMessage;
-		this.experience = experience;
-		
-	}
 		
 }
