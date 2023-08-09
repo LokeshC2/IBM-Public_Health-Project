@@ -1,6 +1,6 @@
 package com.example.service;
 
-import java.util.List;		
+import java.util.List;			
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.entity.PatientRegistration;
 import com.example.repository.PatientRegistrationRepository;
+import com.example.ui.LoginValidation;
 import com.example.ui.PatientRegistrationDto;
 
 @Service
@@ -21,7 +22,7 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 		
 		return patientRegistrationRepository.findAll();
 	}
-
+	
 	@Override
 	public PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration) {
 		PatientRegistration patientStatus= patientRegistrationRepository.findByEmail(thePatientRegistration.getEmail());
@@ -40,7 +41,8 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 		  }
 		  String userId =  sb.toString();
 		thePatientRegistration.setUserId(userId);
-		return patientRegistrationRepository.save(thePatientRegistration);}
+		return patientRegistrationRepository.save(thePatientRegistration);
+		}
 		else return null;
 	}
 
@@ -86,5 +88,25 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 		return   patientRegistrationRepository.save(patientUpdate);
 		}
 	}
+
+	@Override
+	public LoginValidation validateLogin(String userId, String password) {
+		PatientRegistration patientRegistration = patientRegistrationRepository.findByUserId(userId);
+		LoginValidation loginValidation = new LoginValidation();
+		if(patientRegistration!=null)
+		{
+			
+			if(patientRegistration.getPassword().equals(password))
+	    	{	
+	    		 loginValidation.setLoginStatus(true);
+	    		 loginValidation.setId(patientRegistration.getPatient_id());
+	    	}
+	    	else
+	    	{
+	    		 loginValidation.setLoginStatus(false);
+	    	}	
+		}
+		return loginValidation;
+	}	
 
 }

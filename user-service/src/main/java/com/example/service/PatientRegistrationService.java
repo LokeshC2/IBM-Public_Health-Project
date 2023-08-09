@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.List;	
 
 import com.example.entity.PatientRegistration;
+import com.example.ui.LoginValidation;
 import com.example.ui.PatientRegistrationDto;
 
 public interface PatientRegistrationService {
@@ -17,5 +18,6 @@ public interface PatientRegistrationService {
 
 	public PatientRegistration updatepatientregistration(String id, PatientRegistration patient);
 	
+	public LoginValidation validateLogin(String userId, String password) ;
 	
 }

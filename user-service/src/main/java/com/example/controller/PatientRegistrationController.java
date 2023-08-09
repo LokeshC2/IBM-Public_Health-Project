@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import java.util.List;
+import java.util.List;	
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entity.PatientRegistration;
 import com.example.exception.CallException;
 import com.example.service.PatientRegistrationService;
+import com.example.ui.Login;
+import com.example.ui.LoginValidation;
 import com.example.ui.PatientRegistrationDto;
 
 @RestController
@@ -72,6 +74,14 @@ public class PatientRegistrationController {
 	         else {
 	        	 return true;
 	         }
+	    }
+	
+	   	@PostMapping("/login")
+	    public LoginValidation login(@RequestBody Login loginDetails) {
+	  	  String userId = loginDetails.getUserId();
+	  	  String password = loginDetails.getPassword();
+	
+	      return patientRegistrationService.validateLogin(userId, password);
 	    }
 
 }
