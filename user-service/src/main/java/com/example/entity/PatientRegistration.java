@@ -53,6 +53,4 @@ public class PatientRegistration {
 	
 	private String password;
 
-	
-
 }
