@@ -18,7 +18,7 @@ import com.hospital.app.model.Feedback;
 import com.hospital.app.service.FeedbackServiceImpl;
 
 @RestController
-@RequestMapping("/feedback")
+@RequestMapping("/feedbacks")
 public class FeedBackController {
 	@Autowired
 	private FeedbackServiceImpl feedbackService;
@@ -28,11 +28,11 @@ public class FeedBackController {
 		return ResponseEntity.ok(feedbackService.saveFeedback(feedback));
 	}
 	
-	@GetMapping
+	@GetMapping()
 	public ResponseEntity<List<Feedback>> getAllFeedback(){
 		return ResponseEntity.ok(feedbackService.getAllFeedback());
 	}
-	@GetMapping("/{id}")
+	@GetMapping("/{id}]")
 	public ResponseEntity<Feedback> getFeedbackById(@PathVariable Long id){
 		return ResponseEntity.ok(feedbackService.getFeedbackById(id));
 	}

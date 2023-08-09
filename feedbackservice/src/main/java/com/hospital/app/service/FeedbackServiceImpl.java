@@ -11,26 +11,26 @@ import com.hospital.app.repository.FeedbackRepository;
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
 	@Autowired
-	private FeedbackRepository FeedbackRepository;
+	private FeedbackRepository feedbackRepository;
 	
 	@Override
 	public Feedback saveFeedback(Feedback feedback) {
-		return FeedbackRepository.save(feedback);
+		return feedbackRepository.save(feedback);
 	}
 	
 	@Override
 	public List<Feedback> getAllFeedback() {
-		return FeedbackRepository.findAll();
+		return feedbackRepository.findAll();
 	}
 	
 	@Override
 	public Feedback getFeedbackById(Long id) {
-		return FeedbackRepository.findById(id).get();
+		return feedbackRepository.findById(id).get();
 	}
 	
 	@Override
 	public void deleteFeedbackById(Long id) {
-		FeedbackRepository.deleteById(id);
+		feedbackRepository.deleteById(id);
 	}
 
 }
