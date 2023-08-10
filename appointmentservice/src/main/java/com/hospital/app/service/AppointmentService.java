@@ -1,6 +1,7 @@
 package com.hospital.app.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,11 @@ public class AppointmentService {
   }
 
   public Appointment getAppointmentById(Long id) {
-    return appointmentRepository.findById(id).get();
+    try {
+      return appointmentRepository.findById(id).get();
+    } catch (NoSuchElementException e) {
+      throw new NotFoundException(e);
+    }
   }
 
   public void deleteAppointmentById(Long id) {
@@ -38,9 +43,6 @@ public class AppointmentService {
     }
     try {
       Appointment app = appointmentRepository.findById(appointment.getId()).get();
-      if (appointment.getUsername() != null) {
-        app.setUsername(appointment.getUsername());
-      }
       if (appointment.getSlotStart() != null) {
         app.setSlotStart(appointment.getSlotStart());
       }
@@ -51,5 +53,9 @@ public class AppointmentService {
       throw new NotFoundException(e);
     }
     appointmentRepository.flush();
+  }
+
+  public List<Appointment> getAppointmentsByPatientId(int id) {
+    return appointmentRepository.findAllByPatientId(id);
   }
 }

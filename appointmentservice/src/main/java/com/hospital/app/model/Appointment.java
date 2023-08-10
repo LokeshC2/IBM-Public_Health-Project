@@ -21,12 +21,12 @@ public class Appointment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String username;
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date slotStart;
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date slotEnd;
-
+  private int patientId;
+  private int doctorId;
   @Transient
   public boolean isValid() {
     return slotStart.before(slotEnd);
