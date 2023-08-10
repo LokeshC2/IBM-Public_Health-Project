@@ -58,4 +58,8 @@ public class AppointmentService {
   public List<Appointment> getAppointmentsByPatientId(int id) {
     return appointmentRepository.findAllByPatientId(id);
   }
+
+  public List<Appointment> getAppointmentsByDoctorId(int id) {
+    return appointmentRepository.findAllByDoctorId(id);
+  }
 }

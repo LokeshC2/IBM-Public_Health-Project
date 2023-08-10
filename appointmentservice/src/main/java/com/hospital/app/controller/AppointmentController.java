@@ -57,6 +57,11 @@ public class AppointmentController {
     return ResponseEntity.ok(appointmentService.getAppointmentById(id));
   }
 
+  @GetMapping("/doctor/{id}")
+  public ResponseEntity<Appointment> getAppointmentsByDoctorId(@PathVariable Long id) {
+    return ResponseEntity.ok(appointmentService.getAppointmentById(id));
+  }
+
   @ExceptionHandler(NotFoundException.class)
   public ResponseEntity<?> handleException(NotFoundException e) {
     return ResponseEntity.badRequest().body(e.getMessage());

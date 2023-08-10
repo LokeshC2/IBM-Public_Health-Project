@@ -8,6 +8,9 @@ import java.util.List;
 
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-  @Query("SELECT a FROM Appointment a WHERE a.patient.id = ?1") 
+  @Query("SELECT a FROM Appointment a WHERE a.patientId = ?1") 
 	List<Appointment> findAllByPatientId(int patientId);
+
+	@Query("SELECT a FROM Appointment a WHERE a.doctorId = ?1")
+	List<Appointment> findAllByDoctorId(int doctorId);
 }
