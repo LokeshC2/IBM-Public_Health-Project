@@ -1,0 +1,99 @@
+<div class="m-5">
+<h1 class="display-1 row">Doctor Registration</h1>
+
+  <form class="w-50" (ngSubmit)="onSubmit()">
+    <div class="mb-3 fluid row">
+      <label class="form-label" for="firstName" class="sr-only">First Name</label>
+      <input
+        class="form-control"
+        type="text"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+        required
+        autofocus
+        [(ngModel)]="doctor.firstName"
+        name="firstName"
+      />
+    </div>
+
+    <div class="mb-3 fluid row">
+      <label class="form-label" for="lastName" class="sr-only">Last Name</label>
+      <input
+        class="form-control"
+        type="text"
+        id="lastName"
+        class="form-control"
+        placeholder="Last Name"
+        required
+        autofocus
+        [(ngModel)]="doctor.lastName"
+        name="lastName"
+      />
+    </div>
+
+    <div class="mb-3 fluid row">
+      <label class="form-label" for="specialist" class="sr-only"
+        >Specialist</label
+      >
+      <input
+        class="form-control"
+        type="text"
+        id="specialist"
+        class="form-control"
+        placeholder="Specialist"
+        required
+        autofocus
+        [(ngModel)]="doctor.specialist"
+        name="specialist"
+      />
+    </div>
+
+    <div class="mb-3 fluid row">
+      <label class="form-label" for="branch" class="sr-only">Branch</label>
+      <input
+        class="form-control"
+        type="text"
+        id="branch"
+        class="form-control"
+        placeholder="Branch"
+        required
+        autofocus
+        [(ngModel)]="doctor.branch"
+        name="branch"
+      />
+    </div>
+
+    <div class="mb-3 fluid row">
+      <label class="form-label" for="photo" class="sr-only">Photo URL:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="photo"
+        class="form-control"
+        placeholder="Photo"
+        required
+        autofocus
+        [(ngModel)]="doctor.photo"
+        name="photo"
+      />
+    </div>
+
+    <div class="mb-3 fluid row">
+      <label class="form-label" for="fee" class="sr-only">Fee</label>
+      <input
+        class="form-control"
+        type="text"
+        id="fee"
+        class="form-control"
+        placeholder="Fee"
+        required
+        autofocus
+        [(ngModel)]="doctor.fee"
+        name="fee"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>

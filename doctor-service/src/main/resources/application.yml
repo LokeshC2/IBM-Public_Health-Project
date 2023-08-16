@@ -16,12 +16,11 @@ spring:
       path: /h2
       settings:
         web-allow-others: true
-    
+
   boot:
     admin:
       client:
-        url:
-        - http://localhost:8888
+        url: http://localhost:8888
 eureka:
   instance:
     prefer-ip-address: true
