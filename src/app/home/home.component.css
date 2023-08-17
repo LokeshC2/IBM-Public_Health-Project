@@ -1,0 +1,33 @@
+/* Home Appointment */
+.book-appointment{
+    text-align: center;
+    margin-top: 8%;
+}
+
+.book-appointment h2{
+   color: rgb(65, 65, 65);
+   margin-bottom: .5rem;
+}
+
+.book-appointment h6{
+    color: grey;
+    margin-bottom: 1.5rem;
+}
+
+.btn{
+    width: 30%;
+}
+
+/* Footer */
+footer{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    margin-left: 5%;
+}
+
+.card{
+    background-color: #3593f8;
+    border-radius: 0;
+    border: none;
+}
