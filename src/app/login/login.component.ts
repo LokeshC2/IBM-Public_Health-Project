@@ -36,9 +36,9 @@ export class LoginComponent {
 
     loginSuccess(){
       this.user.getUser(this.loginValidation.id)
-      setTimeout(() => {
+      // setTimeout(() => {
         this.router.navigate(["/user"]);
-      }, 400);
+      // }, 400);
       
       console.log('success');
     }

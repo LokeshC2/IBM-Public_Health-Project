@@ -18,6 +18,7 @@ export class SignupComponent {
     this.loginService.registerUser(this.user).subscribe(data =>{
       console.log(data)
       this.router.navigate(["/login"]);
+      alert("Registration Done")
     });
   }
 

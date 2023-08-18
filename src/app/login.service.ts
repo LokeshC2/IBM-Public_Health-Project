@@ -10,7 +10,7 @@ import { Signup } from './signup/signup';
   providedIn: 'root'
 })
 export class LoginService {
-  sharedData = new User();
+  // sharedData = new User();
 
   private baseURL = "http://localhost:8001/users/"
   constructor(private httpClient:HttpClient) { }
