@@ -1,0 +1,50 @@
+<div class="container mt-5" id="feedback">
+<form (ngSubmit)= "onSubmit()">
+    <div class="form-group row">
+      <div class="form-group col-md-6">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="feedback.name" >
+        </div>
+    </div>
+    <br>
+    
+    <div class="form-group row">
+      <div class="form-group col-md-6">
+        <label for="Message">Message</label>
+        <input type="text" class="form-control" id="feedbackMessage" name="feedbackMessage" required [(ngModel)]="feedback.feedbackMessage" >
+        </div>
+    </div>
+    <br>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="good" value="Good" [(ngModel)]="feedback.experience" >
+            <label class="form-check-label" for="good">
+              Good
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="fair" value="Fair" [(ngModel)]="feedback.experience">
+            <label class="form-check-label" for="fair">
+              Fair
+            </label>
+          </div>
+          <div class="form-check ">
+            <input class="form-check-input" type="radio" name="gridRadios" id="poor" value="Poor" [(ngModel)]="feedback.experience">
+            <label class="form-check-label" for="poor">
+              Poor
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <br>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+  </div>
