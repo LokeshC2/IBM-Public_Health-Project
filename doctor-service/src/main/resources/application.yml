@@ -20,12 +20,15 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:8888
+                url: http://localhost:8888
+
+
 eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
+    enabled: false
     fetch-registry: true
     register-with-eureka: true
     service-url:
