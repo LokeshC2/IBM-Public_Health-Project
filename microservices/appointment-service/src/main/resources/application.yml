@@ -36,7 +36,8 @@ management:
       exposure:
         include:
         - '*'
-
+logging:
+  file: logs/appointment-service.log
 
 
 

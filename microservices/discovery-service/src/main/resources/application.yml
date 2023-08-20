@@ -16,3 +16,6 @@ eureka:
     prefer-ip-address: true
   server:
     wait-time-in-ms-when-sync-empty: 0
+
+logging:
+  file: logs/discovery-service.log
