@@ -31,7 +31,7 @@ jobs:
     
     - name: Build and Test Projects
       run: |
-        for project in $(find . -name "pom.xml" -not -path "./.github/*"); do
+        for project in $(find ./microservices -name "pom.xml" -not -path "./.github/*"); do
           cd "$(dirname "$project")"
           echo "Building $project..."
           mvn -B package
