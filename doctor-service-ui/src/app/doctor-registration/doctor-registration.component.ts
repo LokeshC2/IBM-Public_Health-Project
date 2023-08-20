@@ -9,9 +9,9 @@ import { NgForm } from '@angular/forms';
 })
 export class DoctorRegistrationComponent {
 
-  // submission_url = "http://localhost:9999/doctor-service/api/doctors/register";
+  submission_url = "http://localhost:9999/doctor-service/api/doctors/register";
   // submission_url = "http://localhost:8085/api/doctors/register";
-  submission_url = "http://localhost:3000/register";
+  // submission_url = "http://localhost:3000/register";
 
   doctor = new DoctorRegistration();
 
