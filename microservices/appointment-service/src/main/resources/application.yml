@@ -5,7 +5,7 @@ spring:
     name: appointment-service
   
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:mysql://localhost:3306/project
     username: admin
     password: admin
 

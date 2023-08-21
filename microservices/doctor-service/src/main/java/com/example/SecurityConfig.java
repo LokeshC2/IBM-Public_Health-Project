@@ -15,16 +15,18 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
   @Bean
-  public UserDetailsManager userDetailsManager(DataSource datasource) {
+  UserDetailsManager userDetailsManager(DataSource datasource) {
     return new JdbcUserDetailsManager(datasource);
   }
   
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(configurer -> {
-      configurer.antMatchers("/actuator/**").permitAll();
-      configurer.anyRequest().authenticated();
+      configurer.antMatchers("/api/**").hasRole("ADMIN")
+        .antMatchers("/appointments/**").hasRole("USER")
+        .anyRequest().authenticated();
     });
+    http.httpBasic();
     http.cors().disable();
     http.csrf().disable();
     return http.build();

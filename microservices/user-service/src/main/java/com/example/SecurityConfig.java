@@ -25,6 +25,7 @@ public class SecurityConfig {
       configurer.antMatchers("/actuator/**").permitAll();
       configurer.anyRequest().authenticated();
     });
+    http.httpBasic();
     http.cors().disable();
     http.csrf().disable();
     return http.build();
