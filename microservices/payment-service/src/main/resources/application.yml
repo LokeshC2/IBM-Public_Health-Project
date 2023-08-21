@@ -39,4 +39,5 @@ management:
         - '*'
 
 logging:
-  file: logs/payment-service.log
+  file:
+    name: logs/payment-service.log
