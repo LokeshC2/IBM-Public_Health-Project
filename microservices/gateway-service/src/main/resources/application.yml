@@ -17,8 +17,6 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      crossorigin:
-        allowed-origins: "*"
 
 eureka:
   client:
@@ -38,4 +36,5 @@ management:
         - '*'
 
 logging:
-  file: logs/gateway.log
+  file:
+    name: logs/gateway.log

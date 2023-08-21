@@ -21,7 +21,7 @@ import com.example.service.DoctorService;
 
 @RestController
 @RequestMapping("/api/doctors")
-@CrossOrigin(origins = {"http://localhost:4200","http://localhost:9999", "https://ibm.lokeshc2.me/"})
+@CrossOrigin(origins = "*")
 public class DoctorController {
 	
 		@Autowired
