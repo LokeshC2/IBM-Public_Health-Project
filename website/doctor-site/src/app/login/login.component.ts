@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Login } from './login';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
-import { LoginValidation } from './login-validation';
 import { UserComponent } from '../user/user.component';
 
 @Component({
@@ -12,15 +11,14 @@ import { UserComponent } from '../user/user.component';
 })
 export class LoginComponent {
   loginDetails = new Login();
-  loginValidation= new LoginValidation();
 
   constructor(private loginService:LoginService,private router:Router,private user:UserComponent) {}
 
 
      validateLogin(){
       this.loginService.validateLogin(this.loginDetails).subscribe(data =>{
-        this.loginValidation = data;
-        if(this.loginValidation.loginStatus){
+        this.loginDetails = data;
+        if(this.loginDetails.loggedIn){
           this.loginSuccess();
         }
         else{
@@ -35,16 +33,16 @@ export class LoginComponent {
     }
 
     loginSuccess(){
-      this.user.getUser(this.loginValidation.id)
+      this.user.getUser(this.loginDetails.userId);
       // setTimeout(() => {
         this.router.navigate(["/user"]);
       // }, 400);
-      
+
       console.log('success');
     }
 
      onSubmit(){
       this.validateLogin();
      }
-  
+
 }

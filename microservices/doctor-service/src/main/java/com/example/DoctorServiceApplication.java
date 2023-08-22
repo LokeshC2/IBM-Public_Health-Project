@@ -24,7 +24,7 @@ public class DoctorServiceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		if (!userDetailsManager.userExists("admin")) {
 			userDetailsManager.createUser(
-					User.withUsername("admin").password("{noop}admin").roles("ADMIN", "DOCTOR", "USER").build());
+					User.withUsername("admin@ibm.code").password("{noop}admin").roles("ADMIN", "DOCTOR", "USER").build());
 		}
 		if (!userDetailsManager.userExists("user")) {
 			userDetailsManager.createUser(

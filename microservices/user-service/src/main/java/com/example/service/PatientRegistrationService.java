@@ -1,13 +1,14 @@
 package com.example.service;
 
-import java.util.List;	
+import java.util.List;
+
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.entity.PatientRegistration;
-import com.example.ui.LoginValidation;
 import com.example.ui.PatientRegistrationDto;
 
 public interface PatientRegistrationService {
-	
+
 	public List<PatientRegistration> getPatientRegistrations();
 
 	public PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration);
@@ -17,7 +18,7 @@ public interface PatientRegistrationService {
 	public int deletePatientRegistrationById(int id);
 
 	public PatientRegistration updatepatientregistration(String id, PatientRegistration patient);
-	
-	public LoginValidation validateLogin(String userId, String password) ;
-	
+
+	public UserDetails validateLogin(String userId, String password);
+
 }

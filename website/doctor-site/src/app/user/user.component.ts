@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { User } from './user';
+import { User } from './User';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class UserComponent implements OnInit{
     // this.getUser();
   }
 
-  getUser(id:number){
+  getUser(id:string){
     this.loginService.getUser(id).subscribe(data =>{
       this.user = data;
       console.log(this.user);

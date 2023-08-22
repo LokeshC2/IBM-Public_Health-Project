@@ -10,9 +10,11 @@ public interface DoctorService {
 
 	Doctor saveDoctor(Doctor doctor);
 
-	Optional<Doctor> getDoctorById(int id);
+	Optional<Doctor> getDoctorById(String id);
 
-	boolean deleteDoctorById(int id);
+	boolean deleteDoctorById(String id);
 
-	Doctor updateDoctor(Doctor doctor, int id);
+	Doctor updateDoctor(Doctor doctor, String id);
+
+  boolean validateLogin(String username, String password);
 }

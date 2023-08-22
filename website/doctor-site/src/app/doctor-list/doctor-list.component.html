@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <th>Doctor Name</th>
+      <th>Speciality</th>
+      <th>Branch</th>
+      <th>Fee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doctor of doctors">
+      <td>Dr. {{ doctor.firstname }} {{ doctor.lastname }}</td>
+      <td>{{ doctor.specialist }}</td>
+      <td>{{ doctor.branch }}</td>
+      <td>{{ doctor.fee }} /-</td>
+
+      <td *ngIf="loginDetails.loggedIn">
+        <a
+          routerLink="/book-appointment/{{ doctor.id }}"
+          routerLinkActive="active"
+        >
+          <button class="btn btn-primary btn-block">Book Appointment</button>
+        </a>
+      </td>
+
+      <td *ngIf="loginDetails.role == 'ADMIN'">
+        <a routerLink="/edit-doctor/{{ doctor.id }}" routerLinkActive="active">
+          <button class="btn btn-primary btn-block">Edit</button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

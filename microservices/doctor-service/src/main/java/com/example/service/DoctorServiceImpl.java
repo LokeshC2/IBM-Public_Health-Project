@@ -25,13 +25,13 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public Optional<Doctor> getDoctorById(int id) {
+	public Optional<Doctor> getDoctorById(String id) {
 
 		return doctorRepository.findById(id);
 	}
 
 	@Override
-	public Doctor updateDoctor(Doctor tempDoctor, int id) {
+	public Doctor updateDoctor(Doctor tempDoctor, String id) {
 		Optional<Doctor> opDoctor = doctorRepository.findById(id);
 		if (opDoctor.isEmpty()) {
 			return null;
@@ -44,7 +44,7 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public boolean deleteDoctorById(int id) {
+	public boolean deleteDoctorById(String id) {
 		Optional<Doctor> patient = getDoctorById(id);
 		if (patient.isEmpty()) {
 			return false;
@@ -53,6 +53,12 @@ public class DoctorServiceImpl implements DoctorService {
 			return true;
 		}
 
+	}
+
+	@Override
+	public boolean validateLogin(String username, String password) {
+		Optional<Doctor> d = doctorRepository.findByEmailId(username);
+		return d.isPresent() && d.get().getPassword().equals(password);
 	}
 
 }

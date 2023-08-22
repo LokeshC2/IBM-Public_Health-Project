@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DoctorRegistrationComponent } from './doctor-registration/doctor-registration.component';
 import { FormsModule } from '@angular/forms';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DoctorRegistrationComponent
+    DoctorRegistrationComponent,
+    DoctorListComponent
   ],
   imports: [
     BrowserModule,

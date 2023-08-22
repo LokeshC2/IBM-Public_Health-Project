@@ -9,16 +9,17 @@ import { Feedback } from '../feedback/feedback';
   styleUrls: ['./find-feedback-by-id.component.css']
 })
 export class FindFeedbackByIdComponent {
-
+  feedbacks: any;
   id:string='';
   constructor(private feedbackService: FeedbackService,
     private router: Router) { }
-    feedbacks: Feedback[]=[];
+  
 
     findFeedback(id:string){
       this.feedbackService.getFeedbackById(this.id).subscribe(data=>{
         this.feedbacks=data;
         console.log(this.feedbacks);
+        
       },
       error=> console.log(error));
      

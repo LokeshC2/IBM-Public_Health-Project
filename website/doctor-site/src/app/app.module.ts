@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './signup/signup.component';
 import { EnquireComponent } from './enquire/enquire.component';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { DoctorRegistrationComponent } from './doctor-registration/doctor-registration.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { EnquireComponent } from './enquire/enquire.component';
     LoginComponent,
     UserComponent,
     SignupComponent,
-    EnquireComponent
+    EnquireComponent,
+    DoctorListComponent,
+    DoctorRegistrationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],

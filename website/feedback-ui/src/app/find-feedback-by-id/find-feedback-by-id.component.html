@@ -12,6 +12,16 @@
     </div>
   </div>
 
- 
+  <div *ngIf="feedbacks">
+    <br>
+    <br>
+    <h2>Feedback Details</h2>
+    <p><strong>Name:</strong> {{ feedbacks.name }}</p>
+    <p><strong>Message:</strong> {{ feedbacks.feedbackMessage }}</p>
+    <p><strong>Experience:</strong> {{ feedbacks.experience }}</p>
+  </div>
+
+
+  
   
 </form>
