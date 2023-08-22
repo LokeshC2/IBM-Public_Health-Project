@@ -19,7 +19,7 @@ import com.hospital.app.service.EnquiryService;
 
 @RestController
 @RequestMapping("/enquiries")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EnquiryController {
 
   @Autowired

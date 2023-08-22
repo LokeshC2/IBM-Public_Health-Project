@@ -20,7 +20,7 @@ import com.hospital.app.service.FeedbackServiceImpl;
 
 @RestController
 @RequestMapping("/feedbacks")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FeedBackController {
 	@Autowired
 	private FeedbackServiceImpl feedbackService;

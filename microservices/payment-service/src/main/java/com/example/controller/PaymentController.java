@@ -18,7 +18,7 @@ import com.example.service.PaymentService;
 
 @RestController
 @RequestMapping("/payments")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PaymentController {
 	
 	@Autowired
@@ -30,9 +30,9 @@ public class PaymentController {
 		return paymentService.savePayment(payment);	
 	}
 	
-	@GetMapping("/appointment/{AppId}")
-	public Payment findByAppointId(@PathVariable Long AppId) throws CallException {
-		Payment payment = paymentService.getPaymentByAppointmentId(AppId);
+	@GetMapping("/appointment/{appId}")
+	public Payment findByAppointId(@PathVariable Long appId) throws CallException {
+		Payment payment = paymentService.getPaymentByAppointmentId(appId);
 		if(payment==null) {
         	throw new CallException("No record found.");
         }
