@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.entity.PatientRegistration;
 import com.example.repository.PatientRegistrationRepository;
-import com.example.ui.LoginValidation;
 import com.example.ui.PatientRegistrationDto;
 
 @Service
@@ -32,60 +31,44 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 	@Override
 	public PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration) {
 		PatientRegistration patientStatus = patientRegistrationRepository.findByEmail(thePatientRegistration.getEmail());
-		if (patientStatus == null) {
-			String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-					+ "0123456789"
-					+ "abcdefghijklmnopqrstuvxyz";
-			// create StringBuffer size of AlphaNumericString
-			StringBuilder sb = new StringBuilder(7);
-			for (int i = 0; i < 7; i++) {
-				// generate a random number between
-				// 0 to AlphaNumericString variable length
-				int index = (int) (AlphaNumericString.length() * Math.random());
-				// add Character one by one in end of sb
-				sb.append(AlphaNumericString.charAt(index));
-			}
-			String userId = sb.toString();
-			thePatientRegistration.setUserId(userId);
-
-			String username = thePatientRegistration.getEmail();
-
-			if (userDetailsManager.userExists(username)) {
-				userDetailsManager.updateUser(
-						User.withUsername(username)
-								.password(thePatientRegistration.getPassword())
-								.authorities(userDetailsManager.loadUserByUsername(username).getAuthorities())
-								.roles("PATIENT").build());
-			} else {
-				userDetailsManager.createUser(
-						User.withUsername(username)
-								.password(thePatientRegistration.getPassword())
-								.roles("PATIENT").build());
-			}
-
-			return patientRegistrationRepository.save(thePatientRegistration);
-		} else
+		if (patientStatus != null) {
 			return null;
+		}
+		String username = thePatientRegistration.getEmail();
+
+		if (userDetailsManager.userExists(username)) {
+			userDetailsManager.updateUser(
+					User.withUsername(username)
+							.password(thePatientRegistration.getPassword())
+							.authorities(userDetailsManager.loadUserByUsername(username).getAuthorities())
+							.roles("PATIENT").build());
+		} else {
+			userDetailsManager.createUser(
+					User.withUsername(username)
+							.password(thePatientRegistration.getPassword())
+							.roles("PATIENT").build());
+		}
+
+		return patientRegistrationRepository.save(thePatientRegistration);
 	}
 
 	@Override
-	public PatientRegistrationDto getPatientRegistrationById(int id) {
+	public PatientRegistrationDto getPatientRegistrationById(String id) {
 		Optional<PatientRegistration> temp = patientRegistrationRepository.findById(id);
 		if (temp.isEmpty()) {
 			return null;
 		} else {
 			PatientRegistration tempPatient = temp.get();
-			PatientRegistrationDto patientDto = new PatientRegistrationDto(tempPatient.getFirstName(),
+			return new PatientRegistrationDto(tempPatient.getFirstName(),
 					tempPatient.getLastName(), tempPatient.getEmail(), tempPatient.getDateOfBirth(), tempPatient.getAge(),
 					tempPatient.getGender(), tempPatient.getAddress(), tempPatient.getCity(), tempPatient.getState(),
 					tempPatient.getPincode(), tempPatient.getPhone());
-			return patientDto;
 		}
 
 	}
 
 	@Override
-	public int deletePatientRegistrationById(int id) {
+	public int deletePatientRegistrationById(String id) {
 		Optional<PatientRegistration> patient = patientRegistrationRepository.findById(id);
 		if (patient.isEmpty()) {
 			return 0;

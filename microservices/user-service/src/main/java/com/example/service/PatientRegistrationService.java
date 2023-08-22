@@ -9,16 +9,16 @@ import com.example.ui.PatientRegistrationDto;
 
 public interface PatientRegistrationService {
 
-	public List<PatientRegistration> getPatientRegistrations();
+	List<PatientRegistration> getPatientRegistrations();
 
-	public PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration);
+	PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration);
 
-	public PatientRegistrationDto getPatientRegistrationById(int id);
+	PatientRegistrationDto getPatientRegistrationById(String id);
 
-	public int deletePatientRegistrationById(int id);
+	int deletePatientRegistrationById(String id);
 
-	public PatientRegistration updatepatientregistration(String id, PatientRegistration patient);
+	PatientRegistration updatepatientregistration(String id, PatientRegistration patient);
 
-	public UserDetails validateLogin(String userId, String password);
+	UserDetails validateLogin(String userId, String password);
 
 }

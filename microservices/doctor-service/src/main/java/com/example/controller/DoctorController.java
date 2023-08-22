@@ -23,7 +23,7 @@ import com.example.service.DoctorService;
 
 @RestController
 @RequestMapping("/api/doctors")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DoctorController {
 
 	@Autowired
@@ -38,10 +38,11 @@ public class DoctorController {
 
 	@PostMapping("/register")
 	public Doctor createDoctor(@RequestBody Doctor doctor) {
-		if (userDetailsManager.userExists(doctor.getEmailId()))
+		if (userDetailsManager.userExists(doctor.getEmail())) {
 			return null;
+		}
 		userDetailsManager.createUser(User
-				.withUsername(doctor.getEmailId())
+				.withUsername(doctor.getEmail())
 				.password(doctor.getPassword())
 				.roles("DOCTOR").build());
 		return doctorService.saveDoctor(doctor);

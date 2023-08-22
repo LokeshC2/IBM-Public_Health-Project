@@ -24,6 +24,7 @@ public class SecurityConfig {
     http.authorizeHttpRequests(configurer -> {
       configurer.antMatchers("/api/**").hasRole("ADMIN")
         .antMatchers("/appointments/**").hasRole("USER")
+        .antMatchers("/actuator/**").permitAll()
         .anyRequest().authenticated();
     });
     http.httpBasic();

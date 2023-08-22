@@ -9,7 +9,7 @@ import com.example.entity.Doctor;
 
 public interface DoctorRepository extends JpaRepository<Doctor, String> {
 
-  @Query("SELECT d FROM Doctor d WHERE d.emailId = ?1")
+  @Query("SELECT d FROM Doctor d WHERE d.email = ?1")
   Optional<Doctor> findByEmailId(String username);
 
 }

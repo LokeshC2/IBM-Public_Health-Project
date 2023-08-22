@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,15 +21,14 @@ import lombok.Setter;
 @Table(name = "doctor_registration")
 public class Doctor {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String doctor_id;
 	
 	private String firstName;
 	
 	private String lastName;
 
-	@OneToOne(mappedBy = "users.username")
-	private String emailId;
+	private String email;
 	
 	private String specialist;
 	

@@ -24,9 +24,7 @@ import lombok.Setter;
 public class PatientRegistration {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int patient_id;
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String userId;
 	
 	private String firstName;
