@@ -2,9 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 import com.example.entity.PatientRegistration;
+import com.example.ui.LoginResponseDto;
 import com.example.ui.PatientRegistrationDto;
 
 public interface PatientRegistrationService {
@@ -19,6 +18,6 @@ public interface PatientRegistrationService {
 
 	PatientRegistration updatepatientregistration(String id, PatientRegistration patient);
 
-	UserDetails validateLogin(String userId, String password);
+	LoginResponseDto validateLogin(String username, String password);
 
 }

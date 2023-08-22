@@ -17,11 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entity.PatientRegistration;
 import com.example.exception.CallException;
 import com.example.service.PatientRegistrationService;
+import com.example.ui.LoginResponseDto;
 import com.example.ui.PatientRegistrationDto;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins={"http://localhost:4200"})
 public class PatientRegistrationController {
 	
 	@Autowired
@@ -78,11 +79,10 @@ public class PatientRegistrationController {
 	    }
 	
 	   	@PostMapping("/login")
-	    public UserDetails login(@RequestBody UserDetails loginDetails) {
-	  	  String userId = loginDetails.getUsername();
+	    public LoginResponseDto login(@RequestBody UserDetails loginDetails) {
+	  	  String email = loginDetails.getUsername();
 	  	  String password = loginDetails.getPassword();
-	
-	      return patientRegistrationService.validateLogin(userId, password);
+	      return patientRegistrationService.validateLogin(email, password);
 	    }
 
 }

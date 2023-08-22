@@ -1,4 +1,4 @@
-server.port: 0
+server.port: 4233
 spring:
   application:
     name: user-service
@@ -42,4 +42,5 @@ management:
         - '*'
 
 logging:
-  file: logs/user-service.log
+  file:
+    name: logs/user-service.log

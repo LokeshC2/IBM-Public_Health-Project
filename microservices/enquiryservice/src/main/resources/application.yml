@@ -1,4 +1,4 @@
-server.port: 0
+server.port: 4222
 
 spring:
   application:
@@ -43,4 +43,5 @@ management:
         - '*'
 
 logging:
-  file: logs/enquiry-service.log
+  file:
+    name: logs/enquiry-service.log

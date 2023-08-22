@@ -1,4 +1,4 @@
-server.port: 0
+server.port: 4244
 spring:
   application:
     name: feedback-service
@@ -42,4 +42,5 @@ management:
         - '*'
 
 logging:
-  file: logs/feedback-service.log
+  file:
+    name: logs/feedback-service.log

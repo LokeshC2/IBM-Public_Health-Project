@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.entity.PatientRegistration;
 import com.example.repository.PatientRegistrationRepository;
+import com.example.ui.LoginResponseDto;
 import com.example.ui.PatientRegistrationDto;
 
 @Service
@@ -30,9 +31,8 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 
 	@Override
 	public PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration) {
-		PatientRegistration patientStatus = patientRegistrationRepository.findByEmail(thePatientRegistration.getEmail())
-				.get();
-		if (patientStatus != null) {
+		Optional<PatientRegistration> patientStatus = patientRegistrationRepository.findByEmail(thePatientRegistration.getEmail());
+		if (patientStatus.isPresent()) {
 			return null;
 		}
 		String username = thePatientRegistration.getEmail();
@@ -95,11 +95,19 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 	}
 
 	@Override
-	public UserDetails validateLogin(String userId, String password) {
-		PatientRegistration patientRegistration = patientRegistrationRepository.findByUserId(userId).get();
+	public LoginResponseDto validateLogin(String username, String password) {
+		Optional<PatientRegistration> opatientRegistration = patientRegistrationRepository.findByEmail(username);
+
+		if (opatientRegistration.isEmpty()) {
+			return null;
+		} 
+
+		PatientRegistration patientRegistration = opatientRegistration.get();
 
 		if (patientRegistration != null && patientRegistration.getPassword().equals(password)) {
-			return userDetailsManager.loadUserByUsername(patientRegistration.getEmail());
+			UserDetails user = userDetailsManager.loadUserByUsername(patientRegistration.getEmail());
+			return new LoginResponseDto(patientRegistration.getId(),
+					patientRegistration.getEmail(), user.getAuthorities().toString(), user.isEnabled());
 		} else {
 			return null;
 		}

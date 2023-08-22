@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 public class PatientRegistrationDto {
 	
-	
 	private String firstName;
 	
 	private String lastName;

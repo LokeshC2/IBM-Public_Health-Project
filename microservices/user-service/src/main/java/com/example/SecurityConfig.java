@@ -23,12 +23,12 @@ public class SecurityConfig {
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(configurer -> {
       configurer.antMatchers("/actuator/**").permitAll()
-        .antMatchers("/api/**").hasRole("ADMIN")
         .antMatchers("/api/users/register").permitAll()
-        .anyRequest().authenticated();
+        .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
+        .anyRequest().permitAll();
     });
-    http.cors().disable();
     http.csrf().disable();
+    http.cors().disable();
     return http.build();
   }
 }

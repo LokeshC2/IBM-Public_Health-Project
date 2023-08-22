@@ -29,8 +29,6 @@ public class PatientRegistration {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
-	private String userId;
 	
 	private String firstName;
 	
