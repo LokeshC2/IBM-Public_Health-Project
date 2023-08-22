@@ -7,6 +7,10 @@ spring:
     url: jdbc:mysql://localhost:3306/project
     username: admin
     password: admin
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
 
   h2:
     console:
