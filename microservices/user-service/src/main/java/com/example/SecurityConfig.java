@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
   @Bean
-  public UserDetailsManager userDetailsManager(DataSource datasource) {
+  UserDetailsManager userDetailsManager(DataSource datasource) {
     return new JdbcUserDetailsManager(datasource);
   }
   

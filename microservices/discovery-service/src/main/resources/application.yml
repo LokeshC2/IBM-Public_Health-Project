@@ -18,4 +18,5 @@ eureka:
     wait-time-in-ms-when-sync-empty: 0
 
 logging:
-  file: logs/discovery-service.log
+  file:
+    name: logs/discovery-service.log

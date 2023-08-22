@@ -7,6 +7,7 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 @SpringBootApplication
 @EnableAdminServer
+@SuppressWarnings("PMD.UseUtilityClass")
 public class AdminServerApplication {
 
 	public static void main(String[] args) {
