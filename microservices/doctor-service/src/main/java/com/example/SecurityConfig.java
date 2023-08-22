@@ -23,7 +23,7 @@ public class SecurityConfig {
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(configurer -> {
       configurer.antMatchers("/api/**").hasRole("ADMIN")
-        .antMatchers("/appointments/**").hasRole("USER")
+        .antMatchers("/api/doctors/register").permitAll()
         .antMatchers("/actuator/**").permitAll()
         .anyRequest().authenticated();
     });

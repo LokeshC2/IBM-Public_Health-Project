@@ -30,7 +30,8 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 
 	@Override
 	public PatientRegistration savePatientRegistration(PatientRegistration thePatientRegistration) {
-		PatientRegistration patientStatus = patientRegistrationRepository.findByEmail(thePatientRegistration.getEmail());
+		PatientRegistration patientStatus = patientRegistrationRepository.findByEmail(thePatientRegistration.getEmail())
+				.get();
 		if (patientStatus != null) {
 			return null;
 		}
@@ -54,7 +55,7 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 
 	@Override
 	public PatientRegistrationDto getPatientRegistrationById(String id) {
-		Optional<PatientRegistration> temp = patientRegistrationRepository.findById(id);
+		Optional<PatientRegistration> temp = patientRegistrationRepository.findByUserId(id);
 		if (temp.isEmpty()) {
 			return null;
 		} else {
@@ -69,11 +70,11 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 
 	@Override
 	public int deletePatientRegistrationById(String id) {
-		Optional<PatientRegistration> patient = patientRegistrationRepository.findById(id);
+		Optional<PatientRegistration> patient = patientRegistrationRepository.findByUserId(id);
 		if (patient.isEmpty()) {
 			return 0;
 		} else {
-			patientRegistrationRepository.deleteById(id);
+			patientRegistrationRepository.deleteById(patient.get().getId());
 			userDetailsManager.deleteUser(patient.get().getEmail());
 			return 1;
 		}
@@ -82,7 +83,7 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 
 	@Override
 	public PatientRegistration updatepatientregistration(String id, PatientRegistration patient) {
-		PatientRegistration patientUpdate = patientRegistrationRepository.findByUserId(id);
+		PatientRegistration patientUpdate = patientRegistrationRepository.findByUserId(id).get();
 		if (patientUpdate == null) {
 			return null;
 		} else {
@@ -95,7 +96,7 @@ public class PatientRegistrationServiceImpl implements PatientRegistrationServic
 
 	@Override
 	public UserDetails validateLogin(String userId, String password) {
-		PatientRegistration patientRegistration = patientRegistrationRepository.findByUserId(userId);
+		PatientRegistration patientRegistration = patientRegistrationRepository.findByUserId(userId).get();
 
 		if (patientRegistration != null && patientRegistration.getPassword().equals(password)) {
 			return userDetailsManager.loadUserByUsername(patientRegistration.getEmail());

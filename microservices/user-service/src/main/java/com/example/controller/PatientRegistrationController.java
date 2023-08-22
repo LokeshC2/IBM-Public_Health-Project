@@ -21,7 +21,7 @@ import com.example.ui.PatientRegistrationDto;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class PatientRegistrationController {
 	
 	@Autowired

@@ -10,21 +10,26 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Data
 @Entity
 @Table(name="patient_registration")
 public class PatientRegistration {
 	
+	public PatientRegistration(String firstName, String lastName, String email, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
 	private String userId;
 	
 	private String firstName;
@@ -33,21 +38,21 @@ public class PatientRegistration {
 	
 	private String email;
 	
-	private Date dateOfBirth;
+	private Date dateOfBirth = new Date(0);
 	
-	private int age;
+	private int age = 0;
 
-	private String gender;
+	private String gender = "male";
 	
-	private String address;
+	private String address = "NA";
 	
-	private String city;
+	private String city = "NA";
 	
-	private String state;
+	private String state = "NA";
 	
-	private int pincode;
+	private int pincode = 0;
 	
-	private Long phone;
+	private Long phone = 0L;
 	
 	private String password;
 

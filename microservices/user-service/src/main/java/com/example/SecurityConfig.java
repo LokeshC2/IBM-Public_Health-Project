@@ -22,13 +22,13 @@ public class SecurityConfig {
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(configurer -> {
-      configurer.antMatchers("/actuator/**").permitAll();
-      configurer.anyRequest().authenticated();
+      configurer.antMatchers("/actuator/**").permitAll()
+        .antMatchers("/api/**").hasRole("ADMIN")
+        .antMatchers("/api/users/register").permitAll()
+        .anyRequest().authenticated();
     });
-    http.httpBasic();
     http.cors().disable();
     http.csrf().disable();
     return http.build();
   }
-
 }
