@@ -12,37 +12,39 @@ import { UserComponent } from '../user/user.component';
 export class LoginComponent {
   loginDetails = new Login();
 
-  constructor(private loginService:LoginService,private router:Router,private user:UserComponent) {}
+  constructor(private loginService: LoginService, private router: Router) { }
 
+  validateLogin() {
+    console.log(this.loginDetails);
+    this.loginService.validateLogin(this.loginDetails).subscribe(data => {
+      this.loginDetails = { ...this.loginDetails, ...data}
+      if (this.loginDetails.loggedIn) {
+        this.loginSuccess();
+      }
+      else {
+        this.loginFailed();
+      }
+    });
+  }
 
-     validateLogin(){
-      this.loginService.validateLogin(this.loginDetails).subscribe(data =>{
-        this.loginDetails = data;
-        if(this.loginDetails.loggedIn){
-          this.loginSuccess();
-        }
-        else{
-          this.loginFailed();
-        }
-      });
+  loginFailed() {
+    alert("Wrong Inputs!")
+    console.log('failed');
+  }
+
+  loginSuccess() {
+    if (this.loginDetails.role == "USER") {
+      this.router.navigate(['/doctors', this.loginDetails.id]);
     }
-
-    loginFailed(){
-      alert("Wrong Inputs!")
-      console.log('failed');
+    else if (this.loginDetails.role == "DOCTOR") {
+      this.router.navigate(['/doctors', this.loginDetails.id]);
     }
-
-    loginSuccess(){
-      this.user.getUser(this.loginDetails.userId);
-      // setTimeout(() => {
-        this.router.navigate(["/user"]);
-      // }, 400);
-
-      console.log('success');
+    else if (this.loginDetails.role == "ADMIN") {
+      this.router.navigate(['/amdin']);
     }
-
-     onSubmit(){
-      this.validateLogin();
-     }
+    else {
+      this.router.navigate(['/login']);
+    }
+  }
 
 }

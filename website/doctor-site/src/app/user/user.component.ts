@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { User } from './User';
 import { LoginService } from '../login.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit{
   user = new User();
 
-  constructor(private loginService:LoginService,private router:Router) {}
+  constructor(private loginService:LoginService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void{
-    // this.getUser();
+    this.getUser(this.route.snapshot.params['id']);
   }
 
   getUser(id:string){

@@ -6,11 +6,6 @@ import { DeleteFeedbackComponent } from './delete-feedback/delete-feedback.compo
 import { FindFeedbackByIdComponent } from './find-feedback-by-id/find-feedback-by-id.component';
 
 const routes: Routes = [
-  {path: 'create-feedback', component: FeedbackComponent},
-{path: 'feedbacks',component: FeedbackListComponent},
-  {path: '', redirectTo: 'feedbacks', pathMatch:'full'},
-  {path: 'delete-feedback/:id', component: DeleteFeedbackComponent},
-  {path: 'find-feedback/:id',component: FindFeedbackByIdComponent}
 ];
 
 @NgModule({

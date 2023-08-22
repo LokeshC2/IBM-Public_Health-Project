@@ -2,7 +2,21 @@
     <h1 style="text-align: center;">Registration Form</h1>
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <form #preForm="ngForm"  (ngSubmit)="onSubmit()">
+
+        <form *ngIf="role==''" #preForm="ngForm" (ngSubmit)="onSubmitRole()">
+          <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select class="form-select" id="role" name="role" [(ngModel)]="role" required>
+              <option value="">Select Role</option>
+              <option value="USER">User</option>
+              <option value="DOCTOR">Doctor</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Next</button>
+        </form>
+
+
+        <form *ngIf='role == "USER"' #preForm="ngForm"  (ngSubmit)="onSubmitUser()">
           <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" required>
@@ -57,7 +71,40 @@
           </div>
           <button type="submit" class="btn btn-primary">Register</button>
         </form>
+        <form *ngIf="role=='DOCTOR'" #preForm="ngForm" (ngSubmit)="onSubmitDoctor()">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="doctor.firstName" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="doctor.lastName" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="doctor.email" required>
+          </div>
+          <div class="mb-3">
+            <label for="specialist" class="form-label">Specialist</label>
+            <input type="text" class="form-control" id="specialist" name="specialist" [(ngModel)]="doctor.specialist" required>
+          </div>
+          <div class="mb-3">
+            <label for="branch" class="form-label">Branch</label>
+            <input type="text" class="form-control" id="branch" name="branch" [(ngModel)]="doctor.branch" required>
+          </div>
+          <div class="mb-3">
+            <label for="photo" class="form-label">Photo URL</label>
+            <input type="text" class="form-control" id="photo" name="photo" [(ngModel)]="doctor.photo" required>
+          </div>
+          <div class="mb-3">
+            <label for="fee" class="form-label">Fee</label>
+            <input type="number" class="form-control" id="fee" name="fee" [(ngModel)]="doctor.fee" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="doctor.password" required>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  

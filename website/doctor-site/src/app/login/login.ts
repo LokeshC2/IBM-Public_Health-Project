@@ -1,6 +1,6 @@
 export class Login {
   id: number | undefined;
-  userId: string = "DEFAULT";
+  userId: string = "";
   username: string | undefined;
   password: string | undefined;
   role: string = "unlogged";

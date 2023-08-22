@@ -17,21 +17,22 @@
         <div class="card">
           <div class="card-header">Login</div>
           <div class="card-body">
-            <form #preForm="ngForm" (ngSubmit)="onSubmit()">
+            <form #preForm="ngForm" (ngSubmit)="validateLogin()">
               <div class="form-group">
-                <label for="userId">User ID</label>
-                <input type="text" class="form-control" [(ngModel)]="loginDetails.userId" name="userId" required>
+                <label for="userId">UserName</label>
+                <input type="text" class="form-control" [(ngModel)]="loginDetails.username" name="username" required>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" [(ngModel)]="loginDetails.password" name="password" required>
               </div><br />
+              <label for="role">Role</label>
               <select class="form-control" [(ngModel)]="loginDetails.role" name="role" required>
-                <option value="admin">Admin</option>
-                <option value="doctor">Doctor</option>
-                <option value="patient">Patient</option>
+                <option value="ADMIN">Admin</option>
+                <option value="DOCTOR">Doctor</option>
+                <option value="USER" selected>Patient</option>
               </select><br />
-              <button class="btn btn-primary btn-block" >Login</button>
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
             <div class="mt-3">
               <a routerLink="../signup" routerLinkActive="active"><button class="btn btn-secondary btn-block" >Sign Up</button></a>

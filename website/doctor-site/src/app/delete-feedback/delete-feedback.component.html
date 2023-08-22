@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="create-feedback" routerLinkActive="active" class="nav-link"
+        >Add Feeadback</a
+      >
+    </li>
+    <li class="nav-item">
+      <a routerLink="feedbacks" routerLinkActive="active" class="nav-link"
+        >Feeadback List</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        routerLink="delete-feedback/:id"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        Delete Feeadback</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        routerLink="find-feedback/:id"
+        routerLinkActive="active"
+        class="nav-link"
+        >Feeadback By id</a
+      >
+    </li>
+  </ul>
+</nav>
+<form (ngSubmit)="deleteFeedback()" #deleteFeedbackForm="ngForm">
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="Name">Id to be deleted</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        name="id"
+        required
+        [(ngModel)]="id"
+      />
+    </div>
+  </div>
+  <br />
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Delete</button>
+    </div>
+  </div>
+</form>

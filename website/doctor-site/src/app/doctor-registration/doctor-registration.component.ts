@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DoctorRegistration } from './doctor-registration';
 import { NgForm } from '@angular/forms';
+import { DoctorService } from '../doctor.service';
 
 @Component({
   selector: 'app-doctor-registration',
@@ -9,25 +10,19 @@ import { NgForm } from '@angular/forms';
 })
 export class DoctorRegistrationComponent {
 
-  submission_url = "http://localhost:9999/doctor-service/api/doctors/register";
-  // submission_url = "http://localhost:8085/api/doctors/register";
-  // submission_url = "http://localhost:3000/register";
+  constructor(private doctorService: DoctorService) {
+  }
 
   doctor = new DoctorRegistration();
 
   onSubmit() {
-    fetch(this.submission_url, {
-      method: 'POST',
-      body: JSON.stringify(this.doctor),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        alert('Success!');
-      } else {
-        alert('Failure!');
-      }
-    });
+    let response = this.doctorService.registerDoctor(this.doctor)
+    if (response) {
+      console.log("Doctor registered successfully");
+      window.location.href = "/login";
+    } else {
+      console.log("Doctor registration failed");
+      window.location.href = "/doctor-registration";
+    }
   }
 }

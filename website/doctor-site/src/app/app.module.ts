@@ -13,6 +13,10 @@ import { SignupComponent } from './signup/signup.component';
 import { EnquireComponent } from './enquire/enquire.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorRegistrationComponent } from './doctor-registration/doctor-registration.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackListComponent } from './feedback-list/feedback-list.component';
+import { FindFeedbackByIdComponent } from './find-feedback-by-id/find-feedback-by-id.component';
+import { DeleteFeedbackComponent } from './delete-feedback/delete-feedback.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { DoctorRegistrationComponent } from './doctor-registration/doctor-regist
     SignupComponent,
     EnquireComponent,
     DoctorListComponent,
-    DoctorRegistrationComponent
+    DoctorRegistrationComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
+    DeleteFeedbackComponent,
+    FindFeedbackByIdComponent,
   ],
   imports: [
     BrowserModule,

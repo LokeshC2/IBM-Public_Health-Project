@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="create-feedback" routerLinkActive="active" class="nav-link"
+        >Add Feeadback</a
+      >
+    </li>
+    <li class="nav-item">
+      <a routerLink="feedbacks" routerLinkActive="active" class="nav-link"
+        >Feeadback List</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        routerLink="delete-feedback/:id"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        Delete Feeadback</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        routerLink="find-feedback/:id"
+        routerLinkActive="active"
+        class="nav-link"
+        >Feeadback By id</a
+      >
+    </li>
+  </ul>
+</nav>
+<h2>Feedback List</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Feedback Message</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let feedback of feedback">
+      <td>{{ feedback.name }}</td>
+      <td>{{ feedback.feedbackMessage }}</td>
+      <td>{{ feedback.experience }}</td>
+    </tr>
+  </tbody>
+</table>

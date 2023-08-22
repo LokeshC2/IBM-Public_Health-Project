@@ -8,7 +8,8 @@ import { Enquire } from './enquire/enquire';
 })
 export class EnquireService {
 
-  private baseURL = "http://localhost:8002/enquiries"
+  // private baseURL = "http://192.168.226.87:9999/enquiry-service/enquiries"
+  private baseURL = "http://192.168.226.87:4222/enquiries"
   constructor(private httpClient:HttpClient) { }
 
   registerEnquiry(enquire:Enquire): Observable<object>{

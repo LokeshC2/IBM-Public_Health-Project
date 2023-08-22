@@ -9,14 +9,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let doctor of doctors">
-      <td>Dr. {{ doctor.firstname }} {{ doctor.lastname }}</td>
+      <td>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</td>
       <td>{{ doctor.specialist }}</td>
       <td>{{ doctor.branch }}</td>
       <td>{{ doctor.fee }} /-</td>
 
       <td *ngIf="loginDetails.loggedIn">
         <a
-          routerLink="/book-appointment/{{ doctor.id }}"
+          routerLink="book-appointment/{{ doctor.doctor_id }}"
           routerLinkActive="active"
         >
           <button class="btn btn-primary btn-block">Book Appointment</button>
@@ -24,7 +24,7 @@
       </td>
 
       <td *ngIf="loginDetails.role == 'ADMIN'">
-        <a routerLink="/edit-doctor/{{ doctor.id }}" routerLinkActive="active">
+        <a routerLink="edit-doctor/{{ doctor.doctor_id }}" routerLinkActive="active">
           <button class="btn btn-primary btn-block">Edit</button>
         </a>
       </td>
